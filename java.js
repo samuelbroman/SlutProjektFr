@@ -13,7 +13,24 @@ console.log(release)
 console.log(price)
 
 let reviews = [];
-function AddGameData()
+class Game
+{
+    constructor(name, rating, releaseday, releasemonth, releaseyear, price, img)
+    {
+        this.name = name;
+        this.rating = rating;
+        this.releaseday = releaseday;
+        this.releasemonth = releasemonth;
+        this.releaseyear = releaseyear;
+        this.price = price;
+        this.img = img;
+        this.imgdesc = name + " coverart";
+    }
+}
+let bioshock2 = new Game("Bioshock 2", 7, 2, 9, 2010, 20,  "bioshock2temp.jpg")
+reviews.push(bioshock2);
+console.log(reviews[0])
+/*function AddGameData()
 {
     let NewGame = {
         rating,
@@ -22,11 +39,11 @@ function AddGameData()
         price
     };
     reviews.push(NewGame);
-}
-reviews.sort(SortGamesByRating)
-reviews.sort(SortGamesByName)
-reviews.sort(SortGamesByRelease)
-reviews.sort(SortGamesByPrice)
+}*/
+rating.addEventListener('click', reviews.sort(SortGamesByRating))
+name.addEventListener('click', reviews.sort(SortGamesByName))
+release.addEventListener('click', reviews.sort(SortGamesByRelease))
+price.addEventListener('click', reviews.sort(SortGamesByPrice))
 function SortGamesByRating(a, b)
 {
     if (a.rating > b.rating)
@@ -75,3 +92,4 @@ function SortGamesByPrice(a, b)
     }
     return 0;
 }
+

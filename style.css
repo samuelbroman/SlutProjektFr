@@ -44,16 +44,32 @@ nav button:hover{
     align-items: center;
 }
 .titlediv{
-    margin-top: 35px;
+    margin: 35px;
     text-align: center;
 }
 .game{
     text-decoration: none;
     
 }
+.gamedivdiv{
+    display: flex;
+    flex-wrap: wrap;
 
+}
 .gamediv{
     margin-left: 75px;
     display: flex;
     flex-flow: row;
+    flex-direction: column;
+    margin-bottom: 30px;
+    
+}
+.name{
+    margin: 2px;
+}
+.rating{
+    margin: 2px;
+}
+.release{
+    margin: 2px;
 }
