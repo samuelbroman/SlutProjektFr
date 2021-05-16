@@ -51,7 +51,7 @@ nav button:hover{
     text-decoration: none;
     
 }
-.gamedivdiv{
+#gamedivdiv{
     display: flex;
     flex-wrap: wrap;
 

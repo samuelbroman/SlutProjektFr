@@ -3,14 +3,14 @@ const NameButton = document.querySelector('#namebutton')
 const ReleaseButton = document.querySelector('#releasebutton')
 const PriceButton = document.querySelector('#pricebutton')
 const Titles = document.querySelector('titlebutton')
-const rating = document.querySelector('#rating')
+/*const rating = document.querySelector('#rating')
 const name = document.querySelector('#name')
 const release = document.querySelector('#release')
 const price = document.querySelector('#price')
 console.log(rating)
 console.log(name)
 console.log(release)
-console.log(price)
+console.log(price)*/
 
 let reviews = [];
 class Game
@@ -26,9 +26,14 @@ class Game
         this.img = img;
         this.imgdesc = name + " coverart";
     }
+    CreateHTML() {
+        document.getElementById("gamedivdiv").innerHTML += "<div class='gamediv' width = '375px'> <h3 class='name'>" + this.name + "</h3> <p class='rating'>" + this.rating + "/10 </p> <p class='release'>" + this.releaseday + "/" + this.releasemonth + " " + this.releaseyear + "</p> <img src=" + this.img + " alt=" + this.name + " coverart' class='game' height='400px'> </div>";
+    }
 }
 let bioshock2 = new Game("Bioshock 2", 7, 2, 9, 2010, 20,  "bioshock2temp.jpg")
+let subnautica = new Game("Subnautica", 9, 23, 1, 2018, 30, "bioshock2temp.jpg")
 reviews.push(bioshock2);
+reviews.push(subnautica);
 console.log(reviews[0])
 /*function AddGameData()
 {
@@ -40,10 +45,10 @@ console.log(reviews[0])
     };
     reviews.push(NewGame);
 }*/
-rating.addEventListener('click', reviews.sort(SortGamesByRating))
-name.addEventListener('click', reviews.sort(SortGamesByName))
-release.addEventListener('click', reviews.sort(SortGamesByRelease))
-price.addEventListener('click', reviews.sort(SortGamesByPrice))
+RatingButton.addEventListener('click', reviews.sort(SortGamesByRating), Displayreviews)
+NameButton.addEventListener('click', reviews.sort(SortGamesByName), Displayreviews)
+ReleaseButton.addEventListener('click', reviews.sort(SortGamesByRelease), Displayreviews)
+PriceButton.addEventListener('click', reviews.sort(SortGamesByPrice), Displayreviews)
 function SortGamesByRating(a, b)
 {
     if (a.rating > b.rating)
@@ -70,15 +75,42 @@ function SortGamesByName(a, b)
 }
 function SortGamesByRelease(a, b)
 {
-    if (a.release > b.release)
+    if (a.releaseyear === b.releaseyear && a.releasemonth === b.releasemonth)
+    {
+    if (a.releaseday > b.releaseday)
     {
         return 1;
     }
-    else if (a.release < b.release)
+    else if (a.releaseday < b.releaseday)
     {
         return -1;
     }
     return 0;
+    }
+    else if (a.releaseyear === b.releaseyear)
+    {
+        if (a.releasemonth > b.releasemonth)
+    {
+        return 1;
+    }
+    else if (a.releasemonth < b.releasemonth)
+    {
+        return -1;
+    }
+    return 0;
+    }
+    else
+    {
+        if (a.releaseeyar > b.releaseeyar)
+    {
+        return 1;
+    }
+    else if (a.releaseeyar < b.releaseeyar)
+    {
+        return -1;
+    }
+    return 0;
+    }
 }
 function SortGamesByPrice(a, b)
 {
@@ -92,4 +124,17 @@ function SortGamesByPrice(a, b)
     }
     return 0;
 }
-
+function Displayreviews()
+{
+    document.getElementById("gamedivdiv").innerHTML = "";
+var i;
+for (i = 0; i < reviews.length; i++)
+{
+    reviews[i].CreateHTML();
+}
+}
+var i;
+for (i = 0; i < reviews.length; i++)
+{
+    reviews[i].CreateHTML();
+}
