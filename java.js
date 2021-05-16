@@ -45,12 +45,19 @@ console.log(reviews[0])
     };
     reviews.push(NewGame);
 }*/
-RatingButton.addEventListener('click', reviews.sort(SortGamesByRating), Displayreviews)
-NameButton.addEventListener('click', reviews.sort(SortGamesByName), Displayreviews)
-ReleaseButton.addEventListener('click', reviews.sort(SortGamesByRelease), Displayreviews)
-PriceButton.addEventListener('click', reviews.sort(SortGamesByPrice), Displayreviews)
+var input;
+RatingButton.addEventListener('click', input="rating", ResortHTML(input))
+NameButton.addEventListener('click', input="name", ResortHTML(input))
+ReleaseButton.addEventListener('click', input="release", ResortHTML(input))
+PriceButton.addEventListener('click', input="price", ResortHTML(input))
+
+/*RatingButton.addEventListener('click', input="rating", reviews.sort(SortGamesByRating), Displayreviews)
+NameButton.addEventListener('click', input="name", reviews.sort(SortGamesByName), Displayreviews)
+ReleaseButton.addEventListener('click', input="release", reviews.sort(SortGamesByRelease), Displayreviews)
+PriceButton.addEventListener('click', input="price", reviews.sort(SortGamesByPrice), Displayreviews)*/
 function SortGamesByRating(a, b)
 {
+    console.log("test")
     if (a.rating > b.rating)
     {
         return 1;
@@ -124,6 +131,94 @@ function SortGamesByPrice(a, b)
     }
     return 0;
 }
+function ResortHTML(input)
+{
+    if (input === "rating")
+    {
+        reviews.list(a, b)
+        {
+            if (a.rating > b.rating)
+            {
+                return 1;
+            }
+            else if (a.rating < b.rating)
+            {
+                return -1;
+            }
+            return 0;
+        }
+    }
+    else if (input === "name")
+    {
+    reviews.sort(a, b)
+    {
+        if (a.name > b.name)
+    {
+        return 1;
+    }
+    else if (a.name < b.name)
+    {
+        return -1;
+    }
+    return 0;
+    }
+}
+    else if (input === "release")
+    {
+        reviews.sort(a, b)
+        {
+        if (a.releaseyear === b.releaseyear && a.releasemonth === b.releasemonth)
+    {
+    if (a.releaseday > b.releaseday)
+    {
+        return 1;
+    }
+    else if (a.releaseday < b.releaseday)
+    {
+        return -1;
+    }
+    return 0;
+    }
+    else if (a.releaseyear === b.releaseyear)
+    {
+        if (a.releasemonth > b.releasemonth)
+    {
+        return 1;
+    }
+    else if (a.releasemonth < b.releasemonth)
+    {
+        return -1;
+    }
+    return 0;
+    }
+    else
+    {
+        if (a.releaseeyar > b.releaseeyar)
+    {
+        return 1;
+    }
+    else if (a.releaseeyar < b.releaseeyar)
+    {
+        return -1;
+    }
+    return 0;
+    }
+}
+}
+    else if (input === "price")
+    {
+        if (a.price > b.price)
+        {
+            return 1;
+        }
+        else if (a.price < b.price)
+        {
+            return -1;
+        }
+        return 0;
+    }
+    Displayreviews();
+}
 function Displayreviews()
 {
     document.getElementById("gamedivdiv").innerHTML = "";
@@ -133,6 +228,7 @@ for (i = 0; i < reviews.length; i++)
     reviews[i].CreateHTML();
 }
 }
+reviews.sort(SortGamesByRating) 
 var i;
 for (i = 0; i < reviews.length; i++)
 {
