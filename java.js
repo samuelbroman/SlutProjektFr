@@ -46,10 +46,10 @@ console.log(reviews[0])
     reviews.push(NewGame);
 }*/
 var input;
-RatingButton.addEventListener('click', input="rating", ResortHTML(input))
-NameButton.addEventListener('click', input="name", ResortHTML(input))
-ReleaseButton.addEventListener('click', input="release", ResortHTML(input))
-PriceButton.addEventListener('click', input="price", ResortHTML(input))
+RatingButton.addEventListener('click', ValueRating())//, ResortHTML(input))
+NameButton.addEventListener('click', ValueName())//, ResortHTML(input))
+ReleaseButton.addEventListener('click', ValueRelease())//, ResortHTML(input))
+PriceButton.addEventListener('click', ValuePrice())//, ResortHTML(input))
 
 /*RatingButton.addEventListener('click', input="rating", reviews.sort(SortGamesByRating), Displayreviews)
 NameButton.addEventListener('click', input="name", reviews.sort(SortGamesByName), Displayreviews)
@@ -135,8 +135,8 @@ function ResortHTML(input)
 {
     if (input === "rating")
     {
-        reviews.list(a, b)
-        {
+        /*reviews.sort(SortGamesByRating) 
+            {
             if (a.rating > b.rating)
             {
                 return 1;
@@ -146,12 +146,12 @@ function ResortHTML(input)
                 return -1;
             }
             return 0;
-        }
+        }*/
     }
     else if (input === "name")
     {
-    reviews.sort(a, b)
-    {
+    reviews.sort(SortGamesByName)
+    /*{
         if (a.name > b.name)
     {
         return 1;
@@ -161,11 +161,11 @@ function ResortHTML(input)
         return -1;
     }
     return 0;
-    }
+    }*/
 }
     else if (input === "release")
     {
-        reviews.sort(a, b)
+        /*reviews.sort(SortGamesByRelease)
         {
         if (a.releaseyear === b.releaseyear && a.releasemonth === b.releasemonth)
     {
@@ -203,10 +203,12 @@ function ResortHTML(input)
     }
     return 0;
     }
-}
+}*/
 }
     else if (input === "price")
     {
+        /*reviews.list(SortGamesByPrice)
+        {
         if (a.price > b.price)
         {
             return 1;
@@ -216,8 +218,29 @@ function ResortHTML(input)
             return -1;
         }
         return 0;
+    }*/
     }
     Displayreviews();
+}
+function ValueRating()
+{
+    input = "rating";
+    ResortHTML(input);
+}
+function ValueName()
+{
+    input = "name"
+    ResortHTML(input);
+}
+function ValueRelease()
+{
+    input = "release"
+    ResortHTML(input);
+}
+function ValuePrice()
+{
+    input = "price"
+    ResortHTML(input);
 }
 function Displayreviews()
 {
