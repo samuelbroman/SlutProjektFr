@@ -225,22 +225,51 @@ function ResortHTML(input)
 function ValueRating()
 {
     input = "rating";
-    ResortHTML(input);
+    //ResortHTML(input);
+    var i;
+    for (i = 0; i < reviews.length; i++)
+    {
+        reviews.sort(SortGamesByRating);
+    }
+    //reviews.sort(SortGamesByRating);
+    Displayreviews();
 }
 function ValueName()
 {
     input = "name"
-    ResortHTML(input);
+    //ResortHTML(input);
+    var i;
+    for (i = 0; i < reviews.length; i++)
+    {
+        reviews.sort(SortGamesByName);
+
+    }
+    //reviews.sort(SortGamesByName);
+    Displayreviews();
 }
 function ValueRelease()
 {
     input = "release"
-    ResortHTML(input);
+    //ResortHTML(input);
+    var i;
+    for (i = 0; i < reviews.length; i++)
+    {
+        reviews.sort(SortGamesByRelease);
+    }
+    //reviews.sort(SortGamesByRelease);
+    Displayreviews();
 }
 function ValuePrice()
 {
     input = "price"
-    ResortHTML(input);
+    //ResortHTML(input);
+    var i;
+    for (i = 0; i < reviews.length; i++)
+    {
+        reviews.sort(SortGamesByPrice);
+    }
+    //reviews.sort(SortGamesByPrice);
+    Displayreviews();
 }
 function Displayreviews()
 {
