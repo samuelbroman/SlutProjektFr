@@ -27,13 +27,19 @@ class Game
         this.imgdesc = name + " coverart";
     }
     CreateHTML() {
-        document.getElementById("gamedivdiv").innerHTML += "<div class='gamediv' width = '375px'> <h3 class='name'>" + this.name + "</h3> <p class='rating'>" + this.rating + "/10 </p> <p class='release'>" + this.releaseday + "/" + this.releasemonth + " " + this.releaseyear + "</p> <img src=" + this.img + " alt=" + this.name + " coverart' class='game' height='400px'> </div>";
+        document.getElementById("gamedivdiv").innerHTML += "<div class='gamediv' width = '375px'> <h3 class='name'>" + this.name + "</h3> <p class='rating'>Rating: " + this.rating + "/10 </p> <p class='release'>Release date: " + this.releaseday + "/" + this.releasemonth + " " + this.releaseyear + "</p> <p>Price (€): " + this.price + " euro</p> <img src=" + this.img + " alt=" + this.name + " coverart' class='game' height='400px'> </div>";
     }
 }
-let bioshock2 = new Game("Bioshock 2", 7, 2, 9, 2010, 20,  "bioshock2temp.jpg")
-let subnautica = new Game("Subnautica", 9, 23, 1, 2018, 30, "bioshock2temp.jpg")
+let bioshock2 = new Game("Bioshock 2", 7, 9, 2, 2010, 20,  "bioshock2temp.jpg")
+let subnautica = new Game("Subnautica", 9, 1, 23, 2018, 30, "subnauticaboxart.jpg")
+let nierAutomata = new Game("Nier: Automata", 10, 3, 17, 2017, 40, "nierAutomataboxart.jpg")
+let cryoffear = new Game("Cry of fear", 8, 4, 25, 2013, 0, "cryoffearboxart.jpg")
+let re7 = new Game("Resident evil 7", 9, 1, 23, 2017, 30, "re7boxart.jpg")
 reviews.push(bioshock2);
 reviews.push(subnautica);
+reviews.push(nierAutomata);
+reviews.push(cryoffear);
+reviews.push(re7);
 console.log(reviews[0])
 /*function AddGameData()
 {
@@ -51,30 +57,27 @@ NameButton.addEventListener('click', ValueName())//, ResortHTML(input))
 ReleaseButton.addEventListener('click', ValueRelease())//, ResortHTML(input))
 PriceButton.addEventListener('click', ValuePrice())//, ResortHTML(input))
 
-/*RatingButton.addEventListener('click', input="rating", reviews.sort(SortGamesByRating), Displayreviews)
-NameButton.addEventListener('click', input="name", reviews.sort(SortGamesByName), Displayreviews)
-ReleaseButton.addEventListener('click', input="release", reviews.sort(SortGamesByRelease), Displayreviews)
-PriceButton.addEventListener('click', input="price", reviews.sort(SortGamesByPrice), Displayreviews)*/
 function SortGamesByRating(a, b)
 {
-    console.log("test")
     if (a.rating > b.rating)
     {
-        return 1;
+        return -1;
     }
     else if (a.rating < b.rating)
     {
-        return -1;
+        return 1;
     }
     return 0;
 }
 function SortGamesByName(a, b)
 {
-    if (a.name > b.name)
+    let aname = a.name.toLowerCase();
+    let bname = b.name.toLowerCase();
+    if (aname > bname)
     {
         return 1;
     }
-    else if (a.name < b.name)
+    else if (aname < bname)
     {
         return -1;
     }
@@ -82,37 +85,40 @@ function SortGamesByName(a, b)
 }
 function SortGamesByRelease(a, b)
 {
-    if (a.releaseyear === b.releaseyear && a.releasemonth === b.releasemonth)
+    console.log("Release");
+    if (a.releaseyear == b.releaseyear && a.releasemonth == b.releasemonth)
     {
+        console.log("day sort");
     if (a.releaseday > b.releaseday)
     {
-        return 1;
+        return -1;
     }
     else if (a.releaseday < b.releaseday)
     {
-        return -1;
+        return 1;
     }
     return 0;
     }
-    else if (a.releaseyear === b.releaseyear)
+    else if (a.releaseyear == b.releaseyear)
     {
+        console.log("month sort");
         if (a.releasemonth > b.releasemonth)
     {
-        return 1;
+        return -1;
     }
     else if (a.releasemonth < b.releasemonth)
     {
-        return -1;
+        return 1;
     }
     return 0;
     }
     else
     {
-        if (a.releaseeyar > b.releaseeyar)
+        if (a.releaseyear > b.releaseyear)
     {
         return 1;
     }
-    else if (a.releaseeyar < b.releaseeyar)
+    else if (a.releaseyear < b.releaseyear)
     {
         return -1;
     }
@@ -135,80 +141,21 @@ function ResortHTML(input)
 {
     if (input === "rating")
     {
-        /*reviews.sort(SortGamesByRating) 
-            {
-            if (a.rating > b.rating)
-            {
-                return 1;
-            }
-            else if (a.rating < b.rating)
-            {
-                return -1;
-            }
-            return 0;
-        }*/
+        reviews = reviews.sort(SortGamesByRating);
     }
     else if (input === "name")
     {
-    reviews.sort(SortGamesByName)
-    /*{
-        if (a.name > b.name)
-    {
-        return 1;
-    }
-    else if (a.name < b.name)
-    {
-        return -1;
-    }
-    return 0;
-    }*/
+        reviews = reviews.sort(SortGamesByName);
 }
     else if (input === "release")
     {
-        /*reviews.sort(SortGamesByRelease)
-        {
-        if (a.releaseyear === b.releaseyear && a.releasemonth === b.releasemonth)
-    {
-    if (a.releaseday > b.releaseday)
-    {
-        return 1;
-    }
-    else if (a.releaseday < b.releaseday)
-    {
-        return -1;
-    }
-    return 0;
-    }
-    else if (a.releaseyear === b.releaseyear)
-    {
-        if (a.releasemonth > b.releasemonth)
-    {
-        return 1;
-    }
-    else if (a.releasemonth < b.releasemonth)
-    {
-        return -1;
-    }
-    return 0;
-    }
-    else
-    {
-        if (a.releaseeyar > b.releaseeyar)
-    {
-        return 1;
-    }
-    else if (a.releaseeyar < b.releaseeyar)
-    {
-        return -1;
-    }
-    return 0;
-    }
-}*/
+        reviews = reviews.sort(SortGamesByRelease);
+        Displayreviews();       
 }
     else if (input === "price")
     {
-        /*reviews.list(SortGamesByPrice)
-        {
+        reviews = reviews.list(SortGamesByPrice);
+        /*{
         if (a.price > b.price)
         {
             return 1;
@@ -225,64 +172,41 @@ function ResortHTML(input)
 function ValueRating()
 {
     input = "rating";
-    //ResortHTML(input);
-    var i;
-    for (i = 0; i < reviews.length; i++)
-    {
-        reviews.sort(SortGamesByRating);
-    }
-    //reviews.sort(SortGamesByRating);
+    reviews = reviews.sort(SortGamesByRating);
     Displayreviews();
 }
 function ValueName()
 {
     input = "name"
     //ResortHTML(input);
-    var i;
+    /*var i;
     for (i = 0; i < reviews.length; i++)
     {
         reviews.sort(SortGamesByName);
-
-    }
-    //reviews.sort(SortGamesByName);
+    }*/
+    reviews = reviews.sort(SortGamesByName);
     Displayreviews();
 }
 function ValueRelease()
 {
     input = "release"
-    //ResortHTML(input);
-    var i;
-    for (i = 0; i < reviews.length; i++)
-    {
-        reviews.sort(SortGamesByRelease);
-    }
-    //reviews.sort(SortGamesByRelease);
+    reviews = reviews.sort(SortGamesByRelease);
     Displayreviews();
 }
 function ValuePrice()
 {
-    input = "price"
-    //ResortHTML(input);
-    var i;
-    for (i = 0; i < reviews.length; i++)
-    {
-        reviews.sort(SortGamesByPrice);
-    }
-    //reviews.sort(SortGamesByPrice);
+    reviews = reviews.sort((a, b)=>{return b.price - a.price});
     Displayreviews();
 }
 function Displayreviews()
 {
+    console.table(reviews);
     document.getElementById("gamedivdiv").innerHTML = "";
-var i;
-for (i = 0; i < reviews.length; i++)
+for (let i = 0; i < reviews.length; i++)
 {
     reviews[i].CreateHTML();
 }
+console.log("Sorted!");
 }
-reviews.sort(SortGamesByRating) 
-var i;
-for (i = 0; i < reviews.length; i++)
-{
-    reviews[i].CreateHTML();
-}
+//reviews.sort(SortGamesByRating)
+//reviews.sort(function(a, b){return a.price - b.price});
